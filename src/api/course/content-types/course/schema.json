@@ -13,6 +13,12 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chapter.chapter",
+      "mappedBy": "course"
     }
   }
 }
