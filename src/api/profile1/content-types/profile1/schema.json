@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profile1s",
+  "info": {
+    "singularName": "profile1",
+    "pluralName": "profile1s",
+    "displayName": "profile1",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama": {
+      "type": "string"
+    },
+    "hp": {
+      "type": "string"
+    },
+    "nik": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "pendidikan": {
+      "type": "string"
+    },
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

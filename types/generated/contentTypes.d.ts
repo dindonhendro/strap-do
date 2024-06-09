@@ -362,6 +362,104 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiDetailDetail extends Schema.CollectionType {
+  collectionName: 'details';
+  info: {
+    singularName: 'detail';
+    pluralName: 'details';
+    displayName: 'detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nama: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::detail.detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::detail.detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMedicalMedical extends Schema.CollectionType {
+  collectionName: 'medicals';
+  info: {
+    singularName: 'medical';
+    pluralName: 'medicals';
+    displayName: 'medical';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    stock: Attribute.String;
+    price: Attribute.String;
+    description: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::medical.medical',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::medical.medical',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProfile1Profile1 extends Schema.CollectionType {
+  collectionName: 'profile1s';
+  info: {
+    singularName: 'profile1';
+    pluralName: 'profile1s';
+    displayName: 'profile1';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    nama: Attribute.String;
+    hp: Attribute.String;
+    nik: Attribute.String;
+    email: Attribute.String;
+    pendidikan: Attribute.String;
+    foto: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::profile1.profile1',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::profile1.profile1',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -742,7 +840,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -771,86 +868,39 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiChapterChapter extends Schema.CollectionType {
-  collectionName: 'chapters';
-  info: {
-    singularName: 'chapter';
-    pluralName: 'chapters';
-    displayName: 'chapter';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
     nama: Attribute.String;
-    course: Attribute.Relation<
-      'api::chapter.chapter',
-      'manyToOne',
-      'api::course.course'
-    >;
+    tanggalLahir: Attribute.String;
+    jenis: Attribute.String;
+    status: Attribute.String;
+    domisili: Attribute.Text;
+    hp: Attribute.String;
+    nik: Attribute.String;
+    pendidikan: Attribute.String;
+    tahunMasuk: Attribute.String;
+    tahunKeluar: Attribute.String;
+    namaSekolah: Attribute.String;
+    perusahaan: Attribute.String;
+    negara: Attribute.String;
+    profesi: Attribute.String;
+    tahunKerjaMasuk: Attribute.String;
+    tahunKerjaKeluar: Attribute.String;
+    paklaring: Attribute.Media;
+    ktp: Attribute.Media;
+    passport: Attribute.Media;
+    kk: Attribute.Media;
+    dokumen1: Attribute.Media;
+    negaraTujuan: Attribute.String;
+    foto: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::chapter.chapter',
+      'plugin::users-permissions.user',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::chapter.chapter',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCourseCourse extends Schema.CollectionType {
-  collectionName: 'courses';
-  info: {
-    singularName: 'course';
-    pluralName: 'courses';
-    displayName: 'course';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    chapters: Attribute.Relation<
-      'api::course.course',
-      'oneToMany',
-      'api::chapter.chapter'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::course.course',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::course.course',
+      'plugin::users-permissions.user',
       'oneToOne',
       'admin::user'
     > &
@@ -868,6 +918,9 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::detail.detail': ApiDetailDetail;
+      'api::medical.medical': ApiMedicalMedical;
+      'api::profile1.profile1': ApiProfile1Profile1;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -876,8 +929,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::chapter.chapter': ApiChapterChapter;
-      'api::course.course': ApiCourseCourse;
     }
   }
 }
