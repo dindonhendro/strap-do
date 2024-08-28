@@ -163,6 +163,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "bank": {
+      "type": "string"
+    },
+    "jumlahPinjam": {
+      "type": "string"
     }
   }
 }

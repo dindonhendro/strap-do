@@ -917,6 +917,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     dokumen1: Attribute.Media;
     negaraTujuan: Attribute.String;
     foto: Attribute.Media;
+    bank: Attribute.String;
+    jumlahPinjam: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
