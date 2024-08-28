@@ -392,6 +392,32 @@ export interface ApiDetailDetail extends Schema.CollectionType {
   };
 }
 
+export interface ApiJobJob extends Schema.SingleType {
+  collectionName: 'jobs';
+  info: {
+    singularName: 'job';
+    pluralName: 'jobs';
+    displayName: 'job';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    companyName: Attribute.String;
+    location: Attribute.String;
+    role: Attribute.String;
+    detail: Attribute.String;
+    logo: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMedicalMedical extends Schema.CollectionType {
   collectionName: 'medicals';
   info: {
@@ -919,6 +945,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::detail.detail': ApiDetailDetail;
+      'api::job.job': ApiJobJob;
       'api::medical.medical': ApiMedicalMedical;
       'api::profile1.profile1': ApiProfile1Profile1;
       'plugin::upload.file': PluginUploadFile;
