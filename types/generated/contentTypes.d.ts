@@ -392,22 +392,24 @@ export interface ApiDetailDetail extends Schema.CollectionType {
   };
 }
 
-export interface ApiJobJob extends Schema.SingleType {
+export interface ApiJobJob extends Schema.CollectionType {
   collectionName: 'jobs';
   info: {
     singularName: 'job';
     pluralName: 'jobs';
     displayName: 'job';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    companyName: Attribute.String;
+    company: Attribute.String;
     location: Attribute.String;
     role: Attribute.String;
     detail: Attribute.String;
-    logo: Attribute.Media;
+    isFavorite: Attribute.Boolean;
+    companyLogo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
